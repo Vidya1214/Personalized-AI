@@ -1,44 +1,30 @@
 {
-  "name": "edumate-ai",
-  "version": "1.0.0",
-  "description": "AI-powered learning assistant for summaries and quizzes",
+  "name": "ai_app",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "type-check": "tsc --noEmit",
-    "clean": "rm -rf .next uploads/*",
-    "setup": "npm install && mkdir -p uploads"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@types/formidable": "^3.4.5",
-    "formidable": "^3.5.4",
-    "next": "15.3.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "next": "14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "formidable": "^3.5.1",
+    "pdf-parse": "^1.1.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  },
-  "keywords": [
-    "education",
-    "ai",
-    "learning",
-    "quiz",
-    "summary",
-    "nextjs",
-    "openai"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
-  "engines": {
-    "node": ">=18.0.0"
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
+    "@types/formidable": "^3.4.5",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
   }
 }

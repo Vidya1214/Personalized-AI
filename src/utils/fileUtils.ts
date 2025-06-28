@@ -47,12 +47,31 @@ async function processTextFile(filePath: string): Promise<FileProcessingResult> 
 }
 
 async function processPDFFile(filePath: string): Promise<FileProcessingResult> {
-  // For now, return a message about PDF processing
-  // In a production app, you'd use a library like pdf2pic or pdf-parse
-  return { 
-    content: '', 
-    error: 'PDF processing is not yet implemented. Please convert your PDF to text and upload as a .txt file.' 
-  };
+  try {
+    // Dynamically import pdf-parse to handle potential module issues
+    const pdfParse = require('pdf-parse');
+    
+    const dataBuffer = fs.readFileSync(filePath);
+    const pdfData = await pdfParse(dataBuffer);
+    
+    if (!pdfData.text.trim()) {
+      return { content: '', error: 'PDF appears to be empty or contains no readable text' };
+    }
+    
+    // Limit content size
+    const maxLength = 12000;
+    const processedContent = pdfData.text.length > maxLength 
+      ? pdfData.text.substring(0, maxLength) + '...(content truncated)'
+      : pdfData.text;
+    
+    return { content: processedContent };
+  } catch (error) {
+    console.error('PDF processing error:', error);
+    return { 
+      content: '', 
+      error: 'Failed to process PDF. Please ensure the PDF contains readable text or convert to .txt format.' 
+    };
+  }
 }
 
 export function ensureUploadDir(uploadDir: string): void {
